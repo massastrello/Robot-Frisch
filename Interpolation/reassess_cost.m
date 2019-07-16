@@ -1,0 +1,6 @@
+function IDX = reassess_cost(x,qi,qdi,qddi)
+    Wn = computeRegression([qi;x(2:3)],...
+                           [qdi;x(4:5)],...
+                           [qddi;x(6:7)],size(qi,2),size(qi,1)+1);     
+    IDX = abs(x(1)) + 3*cond(Wn); %+ norm(x(8,9))+ 1/min(svd(Wn));
+end 
